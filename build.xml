@@ -1,0 +1,25 @@
+<?xml version = "1.0"?>
+<project name = "CMS" default = "jar" basedir = ".">
+
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+
+   <target name="compile">
+        <mkdir dir="build"/>
+        <javac srcdir="src" destdir="build" includeantruntime="false" debug="on"/>
+    </target>
+
+    <target name="jar" depends ="compile">
+        <mkdir dir="dist/lib"/>
+        <jar destfile="dist/lib/CMS.jar" >
+        <fileset dir="conf"/>
+        <fileset dir="build"/>
+        <fileset dir="lib"/>
+            <manifest>
+                <attribute name="Main-Class" value="TestCustomer"/>
+            </manifest>
+        </jar>
+    </target>
+    
+</project>
